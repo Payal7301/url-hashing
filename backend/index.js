@@ -6,7 +6,7 @@ const  shortid = require("shortid");
 const Url=require('./models/urlModel')
 const utils=require('./util');
 
-const {getAllShortUrls,addNewUrl,redirectOriginalUrl}=require('./controller/userController');
+const {getAllShortUrls,addNewUrl,redirectOriginalUrl}=require('./controller/urlController');
 
 const app=express();
 dotenv.config();
@@ -25,12 +25,18 @@ mongoose.connect(process.env.MONGO_URI,{
 
 
 const urlAuth=express.Router();
+const auth=require('./middleware/auth');
+
 app.use('/',urlAuth);
+app.use('/users',require('./controller/authController'));
 
-urlAuth.route('/all').get(getAllShortUrls);
-urlAuth.route('/short').post(addNewUrl);
+// urlAuth.route('/all').get(getAllShortUrls);
+// urlAuth.route('/short').post(addNewUrl);
+// urlAuth.route('/:urlId').get(redirectOriginalUrl);
+
+urlAuth.route('/all').get(auth,getAllShortUrls);
+urlAuth.route('/short').post(auth,addNewUrl);
 urlAuth.route('/:urlId').get(redirectOriginalUrl);
-
 
 app.listen(3000,()=>{
 console.log('app started on port 3000')
