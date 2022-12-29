@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import UserContext from "../../context/userContext";
 import AddUrlComponent from '../AddUrlComponent';
 
@@ -7,8 +7,14 @@ function AuthOptions () {
     const { userData, setUserData } = useContext(UserContext);
     const history = useHistory();
 
-    const register = () => history.push("user/register");
-    const login = () => history.push("user/login");
+    // const register = () => history.push("user/register");
+    // const login = () => history.push("user/login");
+    const register=()=>{
+
+    }
+    const login=()=>{
+
+    }
     const logout = () => {
         setUserData({
             token: undefined,
@@ -28,8 +34,11 @@ function AuthOptions () {
                 </div>
             ) : (
                 <>
-                <button className="btn btn-primary mr-2" onClick={register}>Sign Up</button>
-                <button className="btn btn-primary mr-2" onClick={login}>Login</button>
+                <Link to='/user/register'>SignUp</Link>
+                <Link to='/user/login'>Login</Link>
+                
+                {/* <button className="btn btn-primary mr-2" onClick={register}>Sign Up</button> */}
+                {/* <button className="btn btn-primary mr-2" onClick={login}>Login</button> */}
                 </>
             )}
         </nav>

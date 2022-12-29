@@ -11,7 +11,7 @@ function Login () {
     const [error, setError] = useState();
 
     const { setUserData } = useContext(UserContext);
-    const history = useHistory();
+    // const history = useHistory();
 
     const submit = async (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ function Login () {
                 user: loginResponse.data.user
             });
             localStorage.setItem("auth-token", loginResponse.data.token);
-            history.push("/");
+            // history.push("/");
         } catch(err) {
             err.response.data.msg && setError(err.response.data.msg)
         }

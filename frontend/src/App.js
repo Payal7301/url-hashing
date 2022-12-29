@@ -39,10 +39,9 @@ function App() {
     <UserContext.Provider value={{ userData, setUserData }}>
       <Header />
       <Switch>
-  
-        <Route exact path="/" component={Home} />
-        <Route path="/user/register" component={Register} />
-        <Route path="/user/login" component={Login} />
+        <Route exact path="/"><Home/></Route>
+        <Route path="/user/register"><Register/></Route>
+        <Route path="/user/login"><Login/></Route>
       </Switch>
       </UserContext.Provider>
   </BrowserRouter>

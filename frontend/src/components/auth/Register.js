@@ -14,7 +14,7 @@ function Register () {
 
     const { setUserData } = useContext(UserContext);
     const [style,setstyle]=useState({});
-    const history = useHistory();
+    // const history = useHistory();
 
     const submit = async (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ function Register () {
                 user: loginResponse.data.user
             });
             localStorage.setItem("auth-token", loginResponse.data.token);
-            history.push("/");
+            // history.push("/");
         } catch(err) {
             err.response.data.msg && setError(err.response.data.msg)
         }
