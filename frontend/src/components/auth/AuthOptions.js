@@ -34,11 +34,8 @@ function AuthOptions () {
                 </div>
             ) : (
                 <>
-                <Link to='/user/register'>SignUp</Link>
-                <Link to='/user/login'>Login</Link>
-                
-                {/* <button className="btn btn-primary mr-2" onClick={register}>Sign Up</button> */}
-                {/* <button className="btn btn-primary mr-2" onClick={login}>Login</button> */}
+                <Link to='/user/register'><button className="btn btn-primary mr-2" >Sign Up</button></Link>
+                <Link to='/user/login'><button className="btn btn-primary mr-2" >Login</button></Link>
                 </>
             )}
         </nav>
