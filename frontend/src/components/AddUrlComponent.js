@@ -15,9 +15,12 @@ const AddUrlComponent = () => {
           alert("please enter something");
           return;
         }
-
+        const headers={
+          'Content-Type': 'application/json',
+            "x-auth-token":localStorage.getItem("auth-token")
+        }
         axios
-          .post("http://localhost:3000/short", {origUrl: url})
+          .post("http://localhost:3000/short", {origUrl: url},{headers:headers})
           .then(res => {
             setisfilled(true)
             console.log(res.data)
@@ -28,7 +31,7 @@ const AddUrlComponent = () => {
           .catch(err => {
             console.log(err.message);
           });
-
+          // style={{display: this.state.showStore ? 'block' : 'none' }}
         setUrl("")
     }
     console.log(url)

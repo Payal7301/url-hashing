@@ -31,8 +31,6 @@ res.status(500).json({ error: err.message });
 });
 
 
-
-
 // Login
 router.post("/login", async (req, res) => {
 try {
@@ -72,7 +70,7 @@ res.status(500).json({ error: err.message });
 }
 });
 
-router.get("/", auth, async (req, res) => {
+router.get("/user", auth, async (req, res) => {
 const user = await User.findById(req.user);
 res.json({
 displayName: user.displayName,
